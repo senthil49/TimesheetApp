@@ -1,0 +1,36 @@
+USE [Timesheet]
+GO
+
+/****** Object:  Table [dbo].[Timesheet]    Script Date: 30/03/2015 20:46:33 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[Timesheet](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[UserName] [varchar](100) NULL,
+	[EnteredDate] [datetime] NULL,
+	[HoursWorked] [float] NULL,
+	[Project] [varchar](100) NULL,
+	[Task] [varchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[Timesheet]  WITH CHECK ADD FOREIGN KEY([Project])
+REFERENCES [dbo].[Projects] ([Project])
+GO
+
+

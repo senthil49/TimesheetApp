@@ -1,0 +1,49 @@
+﻿<views:BaseView x:Class="Timesheet.Views.ViewTimesheetView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:views="clr-namespace:Timesheet.Views"
+      xmlns:designTime="clr-namespace:Timesheet.ViewModel.DesignTime"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300" 
+      d:DataContext="{d:DesignInstance Type=designTime:ViewTimesheetViewModel, IsDesignTimeCreatable=True}">
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="Months" Margin="10,5,0,5"></Label>
+        <ComboBox Grid.Row="0" SelectedItem="{Binding SelectedMonth}" ItemsSource="{Binding Months}" Margin="70 5 10 0" Width="200"/>
+
+        <DataGrid Name="TimesheetsGrid" 
+                      ItemsSource="{Binding timesheets}" 
+                      Background="Transparent" 
+                      AutoGenerateColumns="False" 
+                      IsReadOnly="true" 
+                      Height="Auto"
+                      ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                      ColumnWidth="*" 
+                      Padding="10"
+                      SelectionMode="Single"
+                      AlternatingRowBackground="LightCyan"  
+                      Grid.Row="1"
+                      Grid.Column="0"
+                  HorizontalAlignment="Stretch">
+            
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding EnteredDate, StringFormat=d}" Header="Date" />
+                    <DataGridTextColumn Binding="{Binding ProjectName}" Header="Projects" />
+                    <DataGridTextColumn Binding="{Binding Task}" Header="Task" />
+                    <DataGridTextColumn Binding="{Binding HoursWorked}" Header="Hours Worked"  />
+            </DataGrid.Columns>
+            </DataGrid>
+
+        <Button Grid.Row="2" HorizontalAlignment="Right" Margin="20 0 20 20" Width="100" Content="Export"/>
+
+
+    </Grid>
+</views:BaseView>

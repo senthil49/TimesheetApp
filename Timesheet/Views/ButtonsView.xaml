@@ -1,0 +1,71 @@
+﻿<views:BaseView x:Class="Timesheet.Views.ButtonsView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:views="clr-namespace:Timesheet.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="50" d:DesignWidth="300" 
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity">
+      <!--d:DataContext="{d:DesignInstance Type=designtime:IbnrDataViewModel, IsDesignTimeCreatable=True}">-->
+    
+    <!--<i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>-->
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+       <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BorderThickness="2" BorderBrush="DarkGray"></Border>
+
+        <Button Grid.Column="0" Grid.Row="1" Content="Add Timesheet" Command="{Binding AddTimesheetCommand}" >
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Gray"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding SelectedTab}" Value="AddTimesheetView">
+                            <Setter Property="Background" Value="LightGray" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="1" Grid.Row="1" Content="View Timesheet" Command="{Binding ViewTimesheetCommand}" >
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Gray"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding SelectedTab}" Value="ViewTimesheetView">
+                            <Setter Property="Background" Value="LightGray" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="2" Grid.Row="1" Content="Project Admin" Command="{Binding ProjectAdminCommand}" >
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Gray"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding SelectedTab}" Value="ProjectAdminView">
+                            <Setter Property="Background" Value="LightGray" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        
+    </Grid>
+</views:BaseView>
